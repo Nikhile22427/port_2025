@@ -53,6 +53,13 @@ const GameControl = {
         for (let object of GameEnv.gameObjects) {
             object.resize(); // Resize the game objects
         }
+    },
+    addExitKeyListener: function() {
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                GameEnv.continueLevel = false;
+            }
+        });
     }
 };
 

@@ -1,7 +1,7 @@
 import GameLevel from "./GameLevel.js";
-import Npc from "./NpcDora.js";
-import Player from "./Player.js";
-import GameLevelRedLightGreenLight from "./GameLevelRedLightGreenLight.js";
+import Npc from "../../adventureGame/NpcDora.js";
+import Player from "../../adventureGame/Player.js";
+import GameLevelRedLightGreenLight from "../../adventureGame/GameLevelRedLightGreenLight.js";
 
 class GameLevelDora extends GameLevel {
     constructor() {
