@@ -1,7 +1,8 @@
 import GameEnv from './GameEnv.js';
 import GameLevelSquares from './GameLevelSquares.js';
 import GameLevelWater from './GameLevelWater.js';
-
+import GameLevelDesert from '../../adventureGame/GameLevelDesert.js';
+import GameLevelDora from '../../adventureGame/GameLevelDora.js';
 /**
  * The GameControl object manages the game.
  * 
@@ -25,7 +26,8 @@ const GameControl = {
         // Create the game environment
         GameEnv.create();
         // Load the game level
-        const gameLevel = new GameLevelWater(path);
+        const gameLevel = new GameLevelDora(path)
+        this.addExitKeyListener();
         // Prepare game objects for the level
         for (let object of gameLevel.objects) {
             if (!object.data) object.data = {};

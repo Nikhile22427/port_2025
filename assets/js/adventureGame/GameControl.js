@@ -1,9 +1,8 @@
 import GameEnv from './GameEnv.js';
 import GameLevelWater from './GameLevelWater.js';
 import GameLevelDesert from './GameLevelDesert.js';
+import GameLevelDora from './GameLevelDora.js';
 import { getStats } from "./StatsManager.js";
-
-
 
 const createStatsUI = () => {
     const statsContainer = document.createElement('div');
@@ -50,7 +49,7 @@ const GameControl = {
 
     start: function(path) {
         GameEnv.create();
-        this.levelClasses = [GameLevelDesert, GameLevelWater];
+        this.levelClasses = [GameLevelDesert, GameLevelDora, GameLevelWater];
         this.currentLevelIndex = 0;
         this.path = path;
         this.addExitKeyListener();

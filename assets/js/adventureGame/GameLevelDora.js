@@ -1,11 +1,18 @@
 import GameLevel from "./GameLevel.js";
-import Npc from "../../adventureGame/NpcDora.js";
-import Player from "../../adventureGame/Player.js";
-import GameLevelRedLightGreenLight from "../../adventureGame/GameLevelRedLightGreenLight.js";
+import GameEnv from "../rpg/latest/GameEnv.js";
+import Npc from "./NpcDora.js";
+import Player from "./Player.js";
+import GameLevelRedLightGreenLight from "./GameLevelRedLightGreenLight.js";
 
 class GameLevelDora extends GameLevel {
     constructor() {
-        super("Dora Land", "assets/background/dorahood.png"); // Pixelated Dora-themed background
+        const header = document.querySelector('header');
+        const footer = document.querySelector('footer');
+
+        // Values dependent on GameEnv.create()
+        let width = GameEnv.innerWidth;
+        let height = GameEnv.innerHeight;
+        super("Dora Land", "assets/background/forest.png"); // Pixelated Dora-themed background
         this.setupNPCs();
         this.keyFound = false;
         this.correctDigSpot = { x: 400, y: 300 }; // Set correct dig spot for key
