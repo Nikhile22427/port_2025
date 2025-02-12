@@ -1,5 +1,5 @@
 import GameEnv from './GameEnv.js';
-import Character from './Character.js';
+import Character from './CharacterDora.js';
 
 // Define non-mutable constants as defaults
 const SCALE_FACTOR = 25; // 1/nth of the height of the canvas
