@@ -2,106 +2,57 @@ import GameLevel from "./GameLevel.js";
 import GameEnv from "../rpg/latest/GameEnv.js";
 import Npc from "./NpcDora.js";
 import Player from "./Player.js";
-import GameLevelRedLightGreenLight from "./GameLevelRedLightGreenLight.js";
+import Character from "./CharacterDora.js";
+import Background from "./Background.js";
 
 class GameLevelDora extends GameLevel {
     constructor() {
         const header = document.querySelector('header');
         const footer = document.querySelector('footer');
-
-        // Values dependent on GameEnv.create()
         let width = GameEnv.innerWidth;
         let height = GameEnv.innerHeight;
-        super("Dora Land", "assets/background/forest.png"); // Pixelated Dora-themed background
-        this.setupNPCs();
+        
+        const img_src_dora = path + "assets/backgrounds/dora_background.jpg";
+        const image_data_dora = {
+            name: 'forest',
+            greeting: "hi",
+            src: image_src_dora,
+            pixels: {height: 1135, width: 2490}
+        }
         this.keyFound = false;
         this.correctDigSpot = { x: 400, y: 300 }; // Set correct dig spot for key
         this.chestPosition = { x: 700, y: 350 }; // Position for chest
         this.chestUnlocked = false;
-    }
-
-    setupNPCs() {
-        this.npcs = [
-            new Npc({
-                role: "Boots",
-                position: { x: 200, y: 150 },
-                sprite: "assets/npcs/boots_pixel.png",
-                quiz: {
-                    title: "Spanish Questions",
-                    questions: [
-                        "How do you say 'apple' in Spanish? (Press W to answer)",
-                        "What is the Spanish word for 'door'? (Press W to answer)"
-                    ]
-                }
-            }),
-            new Npc({
-                role: "Map",
-                position: { x: 500, y: 200 },
-                sprite: "assets/npcs/map_pixel.png",
-                dialogue: ["To find the key, you must dig in the right place! (Press Q at the spot)"]
-            }),
-            new Npc({
-                role: "Swiper",
-                position: { x: 600, y: 350 },
-                sprite: "assets/npcs/swiper_pixel.png",
-                autoSteal: true
-            })
-        ];
-
-        this.digSpot = new Npc({
-            role: "DigSpot",
-            position: this.correctDigSpot,
-            sprite: "assets/npcs/dig_spot.png",
-            dialogue: ["Press Q to dig here!"]
-        });
-        this.npcs.push(this.digSpot);
-
-        this.chest = new Npc({
-            role: "Chest",
-            position: this.chestPosition,
-            sprite: "assets/npcs/chest.png",
-            dialogue: ["Press E to use the key and open the chest!"]
-        });
-        this.npcs.push(this.chest);
-    }
-
-    update() {
-        super.update();
         
-        if (this.keyFound) {
-            this.makeSwiperChase();
-        }
-    }
+        
 
-    makeSwiperChase() {
-        const swiper = this.npcs.find(npc => npc.role === "Swiper");
-        if (swiper) swiper.chasePlayer();
-    }
-
-    handleKeyPress(key) {
-        const player = Player.getInstance();
-        if (key === 'q' && !this.keyFound) {
-            if (Math.abs(player.x - this.correctDigSpot.x) < 20 && Math.abs(player.y - this.correctDigSpot.y) < 20) {
-                this.keyFound = true;
-                player.addItem("Key");
-                alert("You found the key! Now return to Rachit before Swiper catches you!");
-            } else {
-                alert("Nothing here... try another spot.");
-            }
-        }
-        if (key === 'e' && this.keyFound && !this.chestUnlocked) {
-            if (Math.abs(player.x - this.chestPosition.x) < 30 && Math.abs(player.y - this.chestPosition.y) < 30) {
-                this.chestUnlocked = true;
-                alert("You unlocked the chest and saved Rachit! Now onto the next challenge!");
-                this.transitionToNextLevel();
-            }
-        }
-    }
-
-    transitionToNextLevel() {
-        const player = Player.getInstance();
-        player.setLevel(new GameLevelRedLightGreenLight());
+        const sprite_src_chillguy = path + "/images/gamify/chillguy.png"; // be sure to include the path
+        const CHILLGUY_SCALE_FACTOR = 5;
+        const sprite_data_chillguy = {
+            id: 'Chill Guy',
+            greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdome and adventure!",
+            src: sprite_src_chillguy,
+            SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
+            STEP_FACTOR: 1000,
+            ANIMATION_RATE: 50,
+            INIT_POSITION: { x: 0, y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
+            pixels: {height: 384, width: 512},
+            orientation: {rows: 3, columns: 4 },
+            down: {row: 0, start: 0, columns: 3 },
+            left: {row: 2, start: 0, columns: 3 },
+            right: {row: 1, start: 0, columns: 3 },
+            up: {row: 3, start: 0, columns: 3 },
+            hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
+            keypress: { up: 87, left: 65, down: 83, right: 68 }, // W, A, S, D
+            level_data: levelData
+        };
+    
+    
+    
     }
 }
+this.objects = [
+    { class: Background, data: image_data_dora }
+  ];
 
 export default GameLevelDora;
