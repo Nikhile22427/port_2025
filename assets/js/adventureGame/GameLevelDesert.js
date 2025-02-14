@@ -24,16 +24,16 @@ class GameLevelDesert {
 
 
     // Player data for Chillguy
-    const sprite_src_chillguy = path + "/assets/npcs/New Piskel (1).png"; // be sure to include the path
-    const CHILLGUY_SCALE_FACTOR = 5;
+    const sprite_src_dora = path + "/assets/npcs/New Piskel (1).png"; // be sure to include the path
+    const DORA_SCALE_FACTOR = 5;
     const sprite_data_chillguy = {
         id: 'Chill Guy',
         greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdome and adventure!",
-        src: sprite_src_chillguy,
-        SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
+        src: sprite_src_dora,
+        SCALE_FACTOR: DORA_SCALE_FACTOR,
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
-        INIT_POSITION: { x: 0, y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
+        INIT_POSITION: { x: 0, y: height - (height/DORA_SCALE_FACTOR) }, 
         pixels: {height: 384, width: 512},
         orientation: {rows: 3, columns: 4 },
         down: {row: 0, start: 0, columns: 3 },

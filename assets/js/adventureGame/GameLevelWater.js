@@ -3,7 +3,7 @@ import Background from './Background.js';
 import Player from './Player.js';
 import Npc from './Npc.js';
 
-class GameLevelDora {
+class GameLevelWater {
   constructor(path) {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -141,4 +141,4 @@ class GameLevelDora {
   }
 }
 
-export default GameLevelDora;
+export default GameLevelWater;
