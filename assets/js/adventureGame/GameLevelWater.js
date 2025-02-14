@@ -82,10 +82,10 @@ class GameLevelWater {
     };
 
     // NPC data for the Map
-    const sprite_src_map = path + "assets/npcs/Map.png";
+    const sprite_src_map = path + "/assets/npcs/Map.png";
     const sprite_data_map = {
         id: 'Map',
-        greeting: "I’m the Map! I can help you find the key!",
+        greeting: "Im the Map! I can help you find the key!",
         src: sprite_src_map,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 100,
@@ -111,7 +111,7 @@ class GameLevelWater {
     const chest_data = {
         id: 'Chest',
         greeting: "Place the key here to unlock Rachit!",
-        src: path + "/images/gamify/chest.png",
+        src: path + "/assets/npcs/chest.png",
         SCALE_FACTOR: 5,
         INIT_POSITION: { x: (width * 2 / 3), y: (height / 3) }
     };
