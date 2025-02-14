@@ -1,11 +1,14 @@
+<<<<<<<< HEAD:assets/js/important files/NpcDora.js
 import GameEnv from "../adventureGame/GameEnv.js";
 import Character from "../adventureGame/CharacterDora.js";
 import Prompt from "../adventureGame/Prompt.js";
 import Player from "../adventureGame/Player.js";
+========
 import GameEnv from "./GameEnv.js";
 import Character from "./Character.js";
 import Prompt from "./Prompt.js";
 import Player from "./Player.js";
+>>>>>>>> 2998dc54 (uyguyguyg):assets/js/rpg/latest/Npc.js
 
 class Npc extends Character {
     constructor(data = null) {
