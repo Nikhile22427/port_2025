@@ -1,9 +1,9 @@
 import GameLevel from "./GameLevel.js";
 import GameEnv from "../rpg/latest/GameEnv.js";
-import Npc from "./NpcDora.js";
-import Player from "./Player.js";
-import Character from "./CharacterDora.js";
-import Background from "./Background.js";
+import NpcDora from "./NpcDora.js";
+import Player from "../adventureGame/Player.js";
+import Character from "../adventureGame/CharacterDora.js";
+import Background from "../adventureGame/Background.js";
 
 class GameLevelDora extends GameLevel {
     constructor() {

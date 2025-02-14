@@ -2,7 +2,7 @@ import GameEnv from './GameEnv.js';
 import GameLevelSquares from './GameLevelSquares.js';
 import GameLevelWater from './GameLevelWater.js';
 import GameLevelDesert from '../../adventureGame/GameLevelDesert.js';
-import GameLevelDora from '../../adventureGame/GameLevelDora.js';
+import GameLevelDora from '../../important files/GameLevelDora.js';
 /**
  * The GameControl object manages the game.
  * 

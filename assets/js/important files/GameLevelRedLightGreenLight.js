@@ -1,5 +1,5 @@
 import GameLevel from "./GameLevel.js";
-import Player from "./Player.js";
+import Player from "../adventureGame/Player.js";
 
 class GameLevelRedLightGreenLight extends GameLevel {
     constructor() {

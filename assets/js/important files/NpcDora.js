@@ -1,7 +1,7 @@
-import GameEnv from "./GameEnv.js";
-import Character from "./CharacterDora.js";
-import Prompt from "./Prompt.js";
-import Player from "./Player.js";
+import GameEnv from "../adventureGame/GameEnv.js";
+import Character from "../adventureGame/CharacterDora.js";
+import Prompt from "../adventureGame/Prompt.js";
+import Player from "../adventureGame/Player.js";
 
 class Npc extends Character {
     constructor(data = null) {
