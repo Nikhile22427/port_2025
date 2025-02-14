@@ -14,11 +14,11 @@ class GameLevelDesert {
 
 
     // Background data
-    const image_src_desert = path + "/assets/background/forest.png"; // be sure to include the path
-    const image_data_desert = {
-        name: 'desert',
-        greeting: "Welcome to the desert!  It is hot and dry here, but there are many adventures to be had!",
-        src: image_src_desert,
+    const image_src_forest = path + "/assets/background/forest.png"; // be sure to include the path
+    const image_data_forest = {
+        name: 'forest',
+        greeting: "Welcome to the forest! We need to save ratGPT",
+        src: image_src_forest,
         pixels: {height: 580, width: 1038}
     };
 
@@ -173,7 +173,7 @@ const sprite_data_htmlhank = {
 
     // List of objects defnitions for this level
     this.objects = [
-      { class: Background, data: image_data_desert },
+      { class: Background, data: image_data_forest },
       { class: Player, data: sprite_data_chillguy },
       { class: Npc, data: sprite_data_tux },
       { class: Npc, data: sprite_data_octocat },
