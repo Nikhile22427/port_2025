@@ -24,11 +24,11 @@ class GameLevelDesert {
 
 
     // Player data for Chillguy
-    const sprite_src_dora = path + "/images/gamify/tux.png"; // be sure to include the path
-    const DORA_SCALE_FACTOR = 8;
+    const sprite_src_dora = path + "/images/gamify/chillguy.png"; // be sure to include the path
+    const DORA_SCALE_FACTOR = 10;
     const sprite_data_chillguy = {
         id: 'Chill Guy',
-        greeting: "Hi! I'm Dora The Explorer, ready for an adventure!",
+        greeting: "Hi! I'm Dora The Explorer",
         src: sprite_src_dora,
         SCALE_FACTOR: DORA_SCALE_FACTOR,
         STEP_FACTOR: 1000,
