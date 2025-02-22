@@ -1,5 +1,5 @@
 import GameEnv from './GameEnv.js';
-import Character from './Character.js';
+import Character from './CharacterDora.js';
 
 // Define non-mutable constants as defaults
 const SCALE_FACTOR = 25; // 1/nth of the height of the canvas
@@ -25,7 +25,7 @@ class Player extends Character {
     constructor(data = null) {
         super(data);
         this.keypress = data?.keypress || {up: 87, left: 65, down: 83, right: 68};
-        this.bindMovementKeyListners();
+        this.bindEventListeners();
     }
 
 
@@ -35,7 +35,7 @@ class Player extends Character {
      * This method binds keydown and keyup event listeners to handle object movement.
      * The .bind(this) method ensures that 'this' refers to the object object.
      */
-    bindMovementKeyListners() {
+    bindEventListeners() {
         addEventListener('keydown', this.handleKeyDown.bind(this));
         addEventListener('keyup', this.handleKeyUp.bind(this));
     }
@@ -43,19 +43,19 @@ class Player extends Character {
     handleKeyDown({ keyCode }) {
         switch (keyCode) {
             case this.keypress.up:
-                this.velocity.y -= 10;
+                this.velocity.y -= this.yVelocity;
                 this.direction = 'up';
                 break;
             case this.keypress.left:
-                this.velocity.x -= 10;
+                this.velocity.x -= this.xVelocity;
                 this.direction = 'left';
                 break;
             case this.keypress.down:
-                this.velocity.y += 10;
+                this.velocity.y += this.yVelocity;
                 this.direction = 'down';
                 break;
             case this.keypress.right:
-                this.velocity.x += 10;
+                this.velocity.x += this.xVelocity;
                 this.direction = 'right';
                 break;
         }
