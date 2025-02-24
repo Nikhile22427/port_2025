@@ -13,7 +13,7 @@ class GameLevelDesert {
     let height = GameEnv.innerHeight;
 
     // Background data
-    const image_src_desert = path + "assets/background/forest.png"; // be sure to include the path
+    const image_src_desert = path + "/assets/background/forest.png"; // be sure to include the path
     const image_data_desert = {
         name: 'forest',
         greeting: "Welcome to the forest! we need to save ratGPT!",
