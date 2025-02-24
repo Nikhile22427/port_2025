@@ -12,34 +12,33 @@ class GameLevelDesert {
     let width = GameEnv.innerWidth;
     let height = GameEnv.innerHeight;
 
-
     // Background data
-    const image_src_forest = path + "/assets/background/forest.png"; // be sure to include the path
-    const image_data_forest = {
+    const image_src_desert = path + "assets/background/forest.png"; // be sure to include the path
+    const image_data_desert = {
         name: 'forest',
-        greeting: "Welcome to the forest! We need to save ratGPT",
-        src: image_src_forest,
+        greeting: "Welcome to the forest! we need to save ratGPT!",
+        src: image_src_desert,
         pixels: {height: 580, width: 1038}
     };
 
 
     // Player data for Chillguy
-    const sprite_src_dora = path + "/images/gamify/chillguy.png"; // be sure to include the path
-    const DORA_SCALE_FACTOR = 10;
+    const sprite_src_chillguy = path + "/images/gamify/chillguy.png"; // be sure to include the path
+    const CHILLGUY_SCALE_FACTOR = 5;
     const sprite_data_chillguy = {
         id: 'Chill Guy',
-        greeting: "Hi! I'm Dora The Explorer",
-        src: sprite_src_dora,
-        SCALE_FACTOR: DORA_SCALE_FACTOR,
+        greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdome and adventure!",
+        src: sprite_src_chillguy,
+        SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
-        INIT_POSITION: { x: 0, y: height - (height/DORA_SCALE_FACTOR) }, 
-        pixels: {height: 256, width: 192},
-        orientation: {rows: 4, columns: 3 },
+        INIT_POSITION: { x: 0, y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
+        pixels: {height: 384, width: 512},
+        orientation: {rows: 3, columns: 4 },
         down: {row: 0, start: 0, columns: 3 },
-        left: {row: 3, start: 0, columns: 3 },
-        right: {row: 2, start: 0, columns: 3 },
-        up: {row: 1, start: 0, columns: 3 },
+        left: {row: 2, start: 0, columns: 3 },
+        right: {row: 1, start: 0, columns: 3 },
+        up: {row: 3, start: 0, columns: 3 },
         hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
         keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
     };
@@ -173,7 +172,7 @@ const sprite_data_htmlhank = {
 
     // List of objects defnitions for this level
     this.objects = [
-      { class: Background, data: image_data_forest },
+      { class: Background, data: image_data_desert },
       { class: Player, data: sprite_data_chillguy },
       { class: Npc, data: sprite_data_tux },
       { class: Npc, data: sprite_data_octocat },

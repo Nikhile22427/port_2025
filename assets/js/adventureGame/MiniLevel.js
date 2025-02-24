@@ -1,24 +1,24 @@
 import GameEnv from './GameEnv.js';
 import Background from './Background.js';
 import Npc from './Npc.js';
-import Character from './Character.js';
+import gameControlInstance from './GameControl.js';
 import Player from './Player.js';
 
-class GameLevelWater {
+class MiniLevel {
   constructor(path) {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
-
+    
     // Values dependent on GameEnv.create()
     let width = GameEnv.innerWidth;
     let height = GameEnv.innerHeight;
 
     // Background data
-    const image_src_water = path + "/images/gamify/deepseadungeon.jpeg";
-    const image_data_water = {
-        id: 'Water',
-        src: image_src_water,
-        pixels: {height: 597, width: 340}
+    const image_src_forest = path + "/images/gamify/forest.png";
+    const image__data_forest = {
+        id: 'Forest',
+        src: image_src_forest,
+        pixels: {height: 315, width: 250}
     };
 
     const sprite_src_octopus = path + "/images/gamify/octopus.png"; // be sure to include the path
@@ -75,11 +75,16 @@ class GameLevelWater {
 
     // List of objects definitions for this level
     this.objects = [
-      { class: Background, data: image_data_water },
+      { class: Background, data: image__data_forest },
       { class: Player, data: sprite_data_octopus },
       { class: Npc, data: sprite_data_nomad },
     ];
   }
+  complete() {
+    // Any clean-up logic or resetting state if needed
+    alert("Mini-level completed! Returning to the main level.");
+    gameControlInstance.handleMiniLevelEnd();
+}
 }
 
-export default GameLevelWater;
+export default MiniLevel;
