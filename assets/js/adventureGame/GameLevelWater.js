@@ -7,8 +7,8 @@ class GameLevelWater {
   constructor(path) {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
-    let width = GameEnv.innerWidth;
-    let height = GameEnv.innerHeight;
+    let width = window.innerWidth; // Fixed issue with GameEnv
+    let height = window.innerHeight;
 
     // Background data
     const image_src_forest = path + "/images/gamify/forest.png";
@@ -20,7 +20,7 @@ class GameLevelWater {
     };
 
     // Player data for Dora
-    const sprite_src_dora = path + "/images/gamify/New Piskel (1).png";
+    const sprite_src_dora = path + "/images/gamify/dora_sprite.png"; // Ensure file exists
     const DORA_SCALE_FACTOR = 5;
     const sprite_data_dora = {
         id: 'Dora',
@@ -29,7 +29,7 @@ class GameLevelWater {
         SCALE_FACTOR: DORA_SCALE_FACTOR,
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
-        INIT_POSITION: { x: 0, y: height - (height/DORA_SCALE_FACTOR) }, 
+        INIT_POSITION: { x: 0, y: height - (height / DORA_SCALE_FACTOR) }, 
         pixels: {height: 384, width: 512},
         orientation: {rows: 3, columns: 4 },
         down: {row: 0, start: 0, columns: 3 },
@@ -41,28 +41,28 @@ class GameLevelWater {
         hasKey: false
     };
 
-   // NPC data for Boots (stationary NPC with quiz)
-   const sprite_src_boots = path + "/assets/npcs/DALL·E 2025-02-11 12.31.06 - A 4x4 pixel art sprite sheet of an anthropomorphic fox wearing a bandana mask over its eyes. The sprite sheet includes walking animations in four dire.png";
-   const sprite_data_boots = {
-       id: 'Boots',
-       greeting: "Hi! I’m Boots! Let’s learn Spanish together!",
-       src: sprite_src_boots,
-       SCALE_FACTOR: 8,
-       ANIMATION_RATE: 50,
-       pixels: {height: 128, width: 128},
-       INIT_POSITION: { x: (width / 2), y: (height / 2)},
-       orientation: {rows: 2, columns: 2 },
-       down: {row: 0, start: 0, columns: 1 },
-       hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-       quiz: { 
-         title: "Spanish Quiz",
-         questions: [
-           "How do you say 'hello' in Spanish?\n1. Hola\n2. Bonjour\n3. Hello\n4. Ciao",
-           "How do you say 'thank you' in Spanish?\n1. Gracias\n2. Merci\n3. Danke\n4. Arigato",
-           "What is the Spanish word for 'blue'?\n1. Azul\n2. Rojo\n3. Verde\n4. Amarillo"
-         ] 
-       }
-   };
+    // NPC data for Boots (stationary NPC with quiz)
+    const sprite_src_boots = path + "/assets/npcs/boots.png"; // Ensure file exists
+    const sprite_data_boots = {
+        id: 'Boots',
+        greeting: "Hi! I’m Boots! Let’s learn Spanish together!",
+        src: sprite_src_boots,
+        SCALE_FACTOR: 8,
+        ANIMATION_RATE: 50,
+        pixels: {height: 128, width: 128},
+        INIT_POSITION: { x: (width / 2), y: (height / 2)},
+        orientation: {rows: 2, columns: 2 },
+        down: {row: 0, start: 0, columns: 1 },
+        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
+        quiz: { 
+          title: "Spanish Quiz",
+          questions: [
+            "How do you say 'hello' in Spanish?\n1. Hola\n2. Bonjour\n3. Hello\n4. Ciao",
+            "How do you say 'thank you' in Spanish?\n1. Gracias\n2. Merci\n3. Danke\n4. Arigato",
+            "What is the Spanish word for 'blue'?\n1. Azul\n2. Rojo\n3. Verde\n4. Amarillo"
+          ] 
+        }
+    };
 
     // NPC data for Swiper
     const sprite_src_swiper = path + "/images/gamify/swiper.png";
@@ -82,28 +82,33 @@ class GameLevelWater {
     };
 
     // NPC data for the Map
-    const sprite_src_map = path + "/assets/npcs/Map.png";
+    const sprite_src_map = path + "/assets/npcs/map.png"; // Ensure file exists
     const sprite_data_map = {
         id: 'Map',
-        greeting: "Im the Map! I can help you find the key!",
+        greeting: "I’m the Map! I can help you find the key!",
         src: sprite_src_map,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 100,
         pixels: {height: 128, width: 128},
-        INIT_POSITION: { x: (width * 3/4), y: (height * 3/4)},
+        INIT_POSITION: { x: (width * 3 / 4), y: (height * 3 / 4)},
         orientation: {rows: 2, columns: 2 },
         down: {row: 0, start: 0, columns: 1 },
         hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-        hint: "Use the q key to dig!"
+        hint: "Use the Q key to dig!"
     };
 
-    // Random key placement
+    // Random key placement function
+    const randomPosition = (width, height) => {
+        return { x: Math.random() * width, y: Math.random() * height };
+    };
+
+    // Key object
     const key_data = {
         id: 'Key',
         greeting: "You found the key! Now take it to the chest!",
         src: path + "/assets/npcs/key.png",
         SCALE_FACTOR: 5,
-        INIT_POSITION: this.randomPosition(width, height),
+        INIT_POSITION: randomPosition(width, height),
         visible: false 
     };
 
@@ -117,18 +122,14 @@ class GameLevelWater {
     };
 
     this.objects = [
-      { class: Background, data: image_data_forest },
-      { class: Player, data: sprite_data_dora },
-      { class: Npc, data: sprite_data_boots },
-      { class: Npc, data: sprite_data_swiper },
-      { class: Npc, data: sprite_data_map },
-      { class: Npc, data: key_data },
-      { class: Npc, data: chest_data }
+        { class: Background, data: image_data_forest },
+        { class: Player, data: sprite_data_dora },
+        { class: Npc, data: sprite_data_boots },
+        { class: Npc, data: sprite_data_swiper },
+        { class: Npc, data: sprite_data_map },
+        { class: Npc, data: key_data },
+        { class: Npc, data: chest_data }
     ];
-  }
-
-  randomPosition(width, height) {
-    return { x: Math.random() * width, y: Math.random() * height };
   }
 
   dig(x, y) {
