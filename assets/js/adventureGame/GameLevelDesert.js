@@ -18,13 +18,13 @@ class GameLevelDesert {
         name: 'forest',
         greeting: "Welcome to the forest! we need to save ratGPT!",
         src: image_src_desert,
-        pixels: {height: 580, width: 1038}
+        pixels: {height: 1134, width: 2088}
     };
 
 
     // Player data for Chillguy
-    const sprite_src_chillguy = path + "/images/gamify/chillguy.png"; // be sure to include the path
-    const CHILLGUY_SCALE_FACTOR = 5;
+    const sprite_src_chillguy = path + "/assets/npcs/New Piskel (1).png"; // be sure to include the path
+    const CHILLGUY_SCALE_FACTOR = 15;
     const sprite_data_chillguy = {
         id: 'Chill Guy',
         greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdome and adventure!",
