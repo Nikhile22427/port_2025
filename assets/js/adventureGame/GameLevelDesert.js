@@ -36,10 +36,10 @@ class GameLevelDesert {
         pixels: {height: 256, width: 192},
         orientation: {rows: 3, columns: 4 },
         down: {row: 0, start: 0, columns: 3 },
-        left: {row: 2, start: 0, columns: 3 },
-        right: {row: 1, start: 0, columns: 3 },
-        up: {row: 3, start: 0, columns: 3 },
-        hitbox: { widthPercentage: 0.45, heightPercentage: 0.1 },
+        left: {row: 3, start: 0, columns: 3 },
+        right: {row: 2, start: 0, columns: 3 },
+        up: {row: 1, start: 0, columns: 3 },
+        hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
         keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
     };
 
