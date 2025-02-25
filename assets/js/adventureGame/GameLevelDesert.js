@@ -23,16 +23,16 @@ class GameLevelDesert {
 
 
     // Player data for Chillguy
-    const sprite_src_chillguy = path + "/assets/npcs/New Piskel (1).png"; // be sure to include the path
-    const CHILLGUY_SCALE_FACTOR = 15;
-    const sprite_data_chillguy = {
+    const sprite_src_dora = path + "/assets/npcs/New Piskel (1).png"; // be sure to include the path
+    const DORA_SCALE_FACTOR = 10;
+    const sprite_data_dora = {
         id: 'Chill Guy',
         greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdome and adventure!",
-        src: sprite_src_chillguy,
-        SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
+        src: sprite_src_dora,
+        SCALE_FACTOR: DORA_SCALE_FACTOR,
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
-        INIT_POSITION: { x: 0, y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
+        INIT_POSITION: { x: 0, y: height - (height/DORA_SCALE_FACTOR) }, 
         pixels: {height: 256, width: 192},
         orientation: {rows: 4, columns: 3 },
         down: {row: 0, start: 0, columns: 3 },
@@ -53,7 +53,7 @@ class GameLevelDesert {
         SCALE_FACTOR: 8,  // Adjust this based on your scaling needs
         ANIMATION_RATE: 50,
         pixels: {height: 256, width: 352},
-        INIT_POSITION: { x: 1818, y: 208},
+        INIT_POSITION: { x: (width * 7/12), y: (height * 1/2) },
         orientation: {rows: 8, columns: 11 },
         down: {row: 5, start: 0, columns: 3 },  // This is the stationary npc, down is default 
         hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
@@ -173,7 +173,7 @@ const sprite_data_htmlhank = {
     // List of objects defnitions for this level
     this.objects = [
       { class: Background, data: image_data_desert },
-      { class: Player, data: sprite_data_chillguy },
+      { class: Player, data: sprite_data_dora },
       { class: Npc, data: sprite_data_tux },
       { class: Npc, data: sprite_data_octocat },
       { class: Npc, data: sprite_data_robot },
