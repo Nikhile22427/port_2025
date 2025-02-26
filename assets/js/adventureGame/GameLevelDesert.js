@@ -3,6 +3,7 @@ import GameEnv from './GameEnv.js';
 import Background from './Background.js';
 import Player from './Player.js';
 import Npc from './Npc.js';
+import GameObject from './GameObject.js';
 
 class GameLevelDesert {
   constructor(path) {
@@ -24,14 +25,14 @@ class GameLevelDesert {
 
     // Player data for Chillguy
     const sprite_src_dora = path + "/assets/npcs/New Piskel (1).png"; // be sure to include the path
-    const DORA_SCALE_FACTOR = 10;
+    const DORA_SCALE_FACTOR = 4;
     const sprite_data_dora = {
         id: 'Chill Guy',
         greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdome and adventure!",
         src: sprite_src_dora,
         SCALE_FACTOR: DORA_SCALE_FACTOR,
         STEP_FACTOR: 1000,
-        ANIMATION_RATE: 50,
+        ANIMATION_RATE: 25,
         INIT_POSITION: { x: 0, y: height - (height/DORA_SCALE_FACTOR) }, 
         pixels: {height: 256, width: 192},
         orientation: {rows: 4, columns: 3 },
@@ -53,7 +54,7 @@ class GameLevelDesert {
         SCALE_FACTOR: 8,  // Adjust this based on your scaling needs
         ANIMATION_RATE: 50,
         pixels: {height: 256, width: 352},
-        INIT_POSITION: { x: (width * 7/12), y: (height * 1/2) },
+        INIT_POSITION: { x: (width * 1/2), y: (height * 1/2) },
         orientation: {rows: 8, columns: 11 },
         down: {row: 5, start: 0, columns: 3 },  // This is the stationary npc, down is default 
         hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
@@ -75,7 +76,9 @@ class GameLevelDesert {
         }
       };
 
-
+    const object_data_rect = {
+        
+    };
 
       // NPC data for Octocat
       const sprite_src_octocat = path + "/images/gamify/octocat.png"; // be sure to include the path
@@ -108,7 +111,7 @@ class GameLevelDesert {
         }
     }
   
-
+    
     const sprite_src_robot = path + "/images/gamify/robot.png"; // be sure to include the path
     const sprite_data_robot = {
         id: 'Robot',
