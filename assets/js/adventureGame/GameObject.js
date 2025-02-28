@@ -162,6 +162,8 @@ class GameObject {
             // add the collisionType to the collisions array, making it the current collision
             this.state.collisionEvents.push(objectOther.id);
             this.handleCollisionReaction(objectOther);
+            
+            
         }
         this.handleCollisionState();
     }
@@ -171,7 +173,10 @@ class GameObject {
      * @param {*} other 
      */
     handleCollisionReaction(other) {
-        alert(other.greet);
+        // Only show the greeting alert if the greeting is not "none"
+        if (other.greet && other.greet !== "none") {
+            alert(other.greet);
+        }
     }
 
     /**

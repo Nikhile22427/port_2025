@@ -24,7 +24,7 @@ class GameLevelDesert {
 
 
     // Player data for Chillguy
-    const sprite_src_dora = path + "/assets/npcs/New Piskel (1).png"; // be sure to include the path
+    const sprite_src_dora = path + "/assets/npcs/Dora.png"; // be sure to include the path
     const DORA_SCALE_FACTOR = 4;
     const sprite_data_dora = {
         id: 'Chill Guy',
@@ -40,24 +40,24 @@ class GameLevelDesert {
         left: {row: 3, start: 0, columns: 3 },
         right: {row: 2, start: 0, columns: 3 },
         up: {row: 1, start: 0, columns: 3 },
-        hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
+        hitbox: { widthPercentage: 0.4, heightPercentage: 0.5 },
         keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
     };
 
-
+  
     // NPC data for Tux 
-    const sprite_src_tux = path + "/images/gamify/tux.png"; // be sure to include the path
-    const sprite_data_tux = {
+    const sprite_src_boots = path + "/assets/npcs/monkey.png"; // be sure to include the path
+    const sprite_data_boots = {
         id: 'Tux',
-        greeting: "Hi I am Tux, the Linux mascot.  I am very happy to spend some linux shell time with you!",
-        src: sprite_src_tux,
-        SCALE_FACTOR: 8,  // Adjust this based on your scaling needs
+        greeting: "Hi! I'm boots! to save ratGPT you need to go talk to map",
+        src: sprite_src_boots,
+        SCALE_FACTOR: 4,  // Adjust this based on your scaling needs
         ANIMATION_RATE: 50,
-        pixels: {height: 256, width: 352},
-        INIT_POSITION: { x: (width * 1/2), y: (height * 1/2) },
-        orientation: {rows: 8, columns: 11 },
-        down: {row: 5, start: 0, columns: 3 },  // This is the stationary npc, down is default 
-        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
+        pixels: {height: 64, width: 256},
+        INIT_POSITION: { x: (width * 214/261), y: (height * 164/567) },
+        orientation: {rows: 1, columns: 4 },
+        down: {row: 0, start: 0, columns: 4 },  // This is the stationary npc, down is default 
+        hitbox: { widthPercentage: 0.4, heightPercentage: 0.4 },
         // Linux command quiz
         quiz: { 
           title: "Linux Command Quiz",
@@ -142,6 +142,22 @@ class GameLevelDesert {
         }
       };
 
+    const sprite_src_tree = path + "/assets/npcs/New Piskel (2).png"; // be sure to include the path
+    const sprite_data_tree = {
+        id: 'Tree',
+        greeting: "none",
+        src: sprite_src_tree,
+        pixels: {height: 64, width: 64},
+        SCALE_FACTOR: 4,
+        ANIMATION_RATE: 100,
+        INIT_POSITION: { x: (width * 700/2088), y: (height * 59/81)},
+        orientation: {rows: 1, columns: 1 },
+        down: {row: 0, start: 0, columns: 1 },  
+        hitbox: { widthPercentage: 0.3, heightPercentage: 0.3 },
+        alert: function() {}
+
+      };
+
   /*  // NPC data for HTML Hank
 const sprite_src_htmlhank = path + "/images/gamify/htmlhank.png"; // be sure to include the path
 const sprite_data_htmlhank = {
@@ -177,9 +193,10 @@ const sprite_data_htmlhank = {
     this.objects = [
       { class: Background, data: image_data_desert },
       { class: Player, data: sprite_data_dora },
-      { class: Npc, data: sprite_data_tux },
+      { class: Npc, data: sprite_data_boots },
       { class: Npc, data: sprite_data_octocat },
       { class: Npc, data: sprite_data_robot },
+      { class: Npc, data: sprite_data_tree}
      // { class: Npc, data: sprite_data_htmlhank }, 
     ];
   }

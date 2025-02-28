@@ -43,19 +43,19 @@ class Player extends Character {
     handleKeyDown({ keyCode }) {
         switch (keyCode) {
             case this.keypress.up:
-                this.velocity.y = -5
+                this.velocity.y = -3
                 this.direction = 'up';
                 break;
             case this.keypress.left:
-                this.velocity.x = -5
+                this.velocity.x = -3
                 this.direction = 'left';
                 break;
             case this.keypress.down:
-                this.velocity.y = 5
+                this.velocity.y = 3
                 this.direction = 'down';
                 break;
             case this.keypress.right:
-                this.velocity.x = 5
+                this.velocity.x = 3
                 this.direction = 'right';
                 break;
         }
@@ -84,6 +84,7 @@ class Player extends Character {
                 break;
         }
     }
+
 
 }
 
