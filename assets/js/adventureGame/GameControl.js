@@ -113,7 +113,7 @@ class GameControl {
 
     addExitKeyListener() {
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
+            if (event.key === '5') {
                 GameEnv.continueLevel = false;
             }
         });

@@ -1,15 +1,19 @@
-import GameEnv from './GameEnv.js';
 import Background from './Background.js';
 import Npc from './Npc.js';
-import Character from './Character.js';
 import Player from './Player.js';
+import GameControl from './GameControl.js';
+
 
 class GameLevelWater {
-  constructor(path) {
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-    let width = window.innerWidth; // Fixed issue with GameEnv
-    let height = window.innerHeight;
+  /**
+   * Properties and methods to define a game level
+   * @param {*} gameEnv - The active game environment
+   */
+  constructor(gameEnv) {
+    // Dependencies to support game level creation
+    let width = gameEnv.innerWidth;
+    let height = gameEnv.innerHeight;
+    let path = gameEnv.path;
 
     // Background data
     const image_src_water = path + "/images/gamify/deepseadungeon.jpeg";
@@ -19,126 +23,73 @@ class GameLevelWater {
         pixels: {height: 597, width: 340}
     };
 
-    // Player data for Dora
-    const sprite_src_dora = path + "/images/gamify/dora_sprite.png"; // Ensure file exists
-    const DORA_SCALE_FACTOR = 5;
-    const sprite_data_dora = {
-        id: 'Dora',
-        greeting: "¡Hola! I am Dora, ready for an adventure!",
-        src: sprite_src_dora,
-        SCALE_FACTOR: DORA_SCALE_FACTOR,
+    // Player Data for Octopus
+    const sprite_src_octopus = path + "/images/gamify/octopus.png"; // be sure to include the path
+    const OCTOPUS_SCALE_FACTOR = 5;
+    const sprite_data_octopus = {
+        id: 'Octopus',
+        greeting: "Hi I am Octopus, the water wanderer. I am looking for wisdome and adventure!",
+        src: sprite_src_octopus,
+        SCALE_FACTOR: OCTOPUS_SCALE_FACTOR,
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
-        INIT_POSITION: { x: 0, y: height - (height / DORA_SCALE_FACTOR) }, 
-        pixels: {height: 384, width: 512},
-        orientation: {rows: 3, columns: 4 },
-        down: {row: 0, start: 0, columns: 3 },
-        left: {row: 3, start: 0, columns: 3 },
-        right: {row: 2, start: 0, columns: 3 },
-        up: {row: 1, start: 0, columns: 3 },
+        INIT_POSITION: { x: 0, y: height - (height/OCTOPUS_SCALE_FACTOR) }, 
+        pixels: {height: 250, width: 167},
+        orientation: {rows: 3, columns: 2 },
+        down: {row: 0, start: 0, columns: 2 },
+        downLeft: {row: 0, start: 0, columns: 2, mirror: true, rotate: Math.Pi/16 }, // mirror is used to flip the sprite
+        downRight: {row: 0, start: 0, columns: 2, rotate: -Math.Pi/16 },
+        left: {row: 1, start: 0, columns: 2, mirror: true }, // mirror is used to flip the sprite
+        right: {row: 1, start: 0, columns: 2 },
+        up: {row: 0, start: 0, columns: 2},
+        upLeft: {row: 1, start: 0, columns: 2, mirror: true, rotate: -Math.Pi/16 }, // mirror is used to flip the sprite
+        upRight: {row: 1, start: 0, columns: 2, rotate: Math.Pi/16 },
         hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
         keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
     };
 
-    // NPC data for Boots (stationary NPC with quiz)
-    const sprite_src_boots = path + "/assets/npcs/boots.png"; // Ensure file exists
-    const sprite_data_boots = {
-        id: 'Boots',
-        greeting: "Hi! I’m Boots! Let’s learn Spanish together!",
-        src: sprite_src_boots,
-        SCALE_FACTOR: 8,
-        ANIMATION_RATE: 50,
-        pixels: {height: 128, width: 128},
-        INIT_POSITION: { x: (width / 2), y: (height / 2)},
-        orientation: {rows: 2, columns: 2 },
-        down: {row: 0, start: 0, columns: 1 },
-        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-        quiz: { 
-          title: "Spanish Quiz",
-          questions: [
-            "How do you say 'hello' in Spanish?\n1. Hola\n2. Bonjour\n3. Hello\n4. Ciao",
-            "How do you say 'thank you' in Spanish?\n1. Gracias\n2. Merci\n3. Danke\n4. Arigato",
-            "What is the Spanish word for 'blue'?\n1. Azul\n2. Rojo\n3. Verde\n4. Amarillo"
-          ] 
-        }
-    };
-
-    // NPC data for Swiper
-    const sprite_src_swiper = path + "/images/gamify/swiper.png";
-    const sprite_data_swiper = {
-        id: 'Swiper',
-        greeting: "Swiper no swiping! Oh man!",
-        src: sprite_src_swiper,
-        SCALE_FACTOR: 10,
-        ANIMATION_RATE: 50,
-        pixels: {height: 301, width: 801},
-        INIT_POSITION: { x: (width / 4), y: (height / 4)},
-        orientation: {rows: 2, columns: 2 },
-        down: {row: 0, start: 0, columns: 3 },
-        hitbox: { widthPercentage: 0.1, heightPercentage: 0.1 },
-        chase: false,
-        speed: 5
-    };
-
-    // NPC data for the Map
-    const sprite_src_map = path + "/assets/npcs/map.png"; // Ensure file exists
-    const sprite_data_map = {
-        id: 'Map',
-        greeting: "I’m the Map! I can help you find the key!",
-        src: sprite_src_map,
-        SCALE_FACTOR: 10,
+    // NPC Data for Byte Nomad (Smaller Version)
+    const sprite_src_nomad = path + "/images/gamify/animwizard.png"; // be sure to include the path
+    const sprite_data_nomad = {
+        id: 'JavaWorld',
+        greeting: "Hi I am Java Portal.  Leave this world and go on a Java adventure!",
+        src: sprite_src_nomad,
+        SCALE_FACTOR: 10,  // Adjust this based on your scaling needs
         ANIMATION_RATE: 100,
-        pixels: {height: 128, width: 128},
+        pixels: {height: 307, width: 813},
         INIT_POSITION: { x: (width * 3 / 4), y: (height * 3 / 4)},
-        orientation: {rows: 2, columns: 2 },
-        down: {row: 0, start: 0, columns: 1 },
+        orientation: {rows: 3, columns: 7 },
+        down: {row: 1, start: 0, columns: 6 },  // This is the stationary npc, down is default 
         hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-        hint: "Use the Q key to dig!"
-    };
+        /* Interact function
+        *  This function is called when the player interacts with the NPC
+        *  It pauses the main game, creates a new GameControl instance with the StarWars level,
+        */
+        interact: function() {
+          // Set a primary game reference from the game environment
+          let primaryGame = gameEnv.gameControl;
+          // Define the game in game level
+          let levelArray = [GameLevelStarWars];
+          // Define a new GameControl instance with the StarWars level
+          let gameInGame = new GameControl(path,levelArray);
+          // Pause the primary game 
+          primaryGame.pause();
+          // Start the game in game
+          gameInGame.start();
+          // Setup "callback" function to allow transition from game in gaame to the underlying game
+          gameInGame.gameOver = function() {
+            // Call .resume on primary game
+            primaryGame.resume();
+          }
+        }
+      };
 
-    // Random key placement function
-    const randomPosition = (width, height) => {
-        return { x: Math.random() * width, y: Math.random() * height };
-    };
-
-    // Key object
-    const key_data = {
-        id: 'Key',
-        greeting: "You found the key! Now take it to the chest!",
-        src: path + "/assets/npcs/key.png",
-        SCALE_FACTOR: 5,
-        INIT_POSITION: randomPosition(width, height),
-        visible: false 
-    };
-
-    // Chest object
-    const chest_data = {
-        id: 'Chest',
-        greeting: "Place the key here to unlock Rachit!",
-        src: path + "/assets/npcs/chest.png",
-        SCALE_FACTOR: 5,
-        INIT_POSITION: { x: (width * 2 / 3), y: (height / 3) }
-    };
-
-    // List of objects definitions for this level
-    this.objects = [
-        { class: Background, data: image_data_forest },
-        { class: Player, data: sprite_data_dora },
-        { class: Npc, data: sprite_data_boots },
-        { class: Npc, data: sprite_data_swiper },
-        { class: Npc, data: sprite_data_map },
-        { class: Npc, data: key_data },
-        { class: Npc, data: chest_data }
+    // List of classes and supporting definitions to create the game level
+    this.classes = [
+      { class: Background, data: image_data_water },
+      { class: Player, data: sprite_data_octopus },
+      { class: Npc, data: sprite_data_nomad },
     ];
-  }
-
-  dig(x, y) {
-    let key = this.objects.find(obj => obj.data.id === 'Key').data;
-    if (!key.visible && Math.abs(x - key.INIT_POSITION.x) < 20 && Math.abs(y - key.INIT_POSITION.y) < 20) {
-      key.visible = true;
-      let swiper = this.objects.find(obj => obj.data.id === 'Swiper').data;
-      swiper.chase = true;
-    }
   }
 }
 

@@ -154,7 +154,7 @@ class GameLevelDesert {
         orientation: {rows: 1, columns: 1 },
         down: {row: 0, start: 0, columns: 1 },  
         hitbox: { widthPercentage: 0.3, heightPercentage: 0.3 },
-        alert: function() {}
+      
 
       };
 
